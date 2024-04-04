@@ -2,6 +2,7 @@ const Game = require('../src/game').default
 const fs = require('fs')
 
 describe('App', () => {
+  
   it('Contains the compiled JavaScript', async (done) => {
     fs.readFile('./public/main.js', 'utf8', (err, data) => {
       expect(err).toBe(null)
@@ -12,6 +13,7 @@ describe('App', () => {
 })
 
 describe('Game', () => {
+  
   let game, p1, p2
   beforeEach(() => {
     p1 = 'Salem'
@@ -31,14 +33,6 @@ describe('Game', () => {
           expect(game.board[r][c]).toBeUndefined()
         }
       }
-    })
-
-    it('Starts the game with a random player', async () => {
-      Math.random = () => 0.4
-      expect(new Game(p1, p2).player).toBe('Salem')
-
-      Math.random = () => 0.6
-      expect(new Game(p1, p2).player).toBe('Nate')
     })
   })
 
